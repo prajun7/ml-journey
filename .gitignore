@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 ImageProcessing/.DS_Store
 .DS_Store
+/cifar-100/data_cifar100
