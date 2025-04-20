@@ -1,0 +1,6 @@
+EfficientNetB0 is a lightweight, efficient model with strong performance due to 
+its compound scaling of depth, width, and resolution. Using pre-trained weights, 
+it can extract robust features for CIFAR-100, potentially boosting accuracy beyond 
+the 57% of the custom CNN (likely to 70-80% with fine-tuning). 
+Its architecture is well-suited for small images like CIFAR-100's 32x32 pixels.
+

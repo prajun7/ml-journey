@@ -1,0 +1,13 @@
+Used Exponential decay
+
+initial_learning_rate = LEARNING_RATE 
+lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
+    initial_learning_rate,
+    decay_steps= (len(x_train) // BATCH_SIZE) * 5, # Decay every 5 epochs approx
+    decay_rate=0.9, # Decay factor
+    staircase=True)
+
+# Applying the schedule in the optimizer
+optimizer = optimizers.Adam(learning_rate=lr_schedule)
+
+And got up to 57.99 accuracy in 100 epoch
