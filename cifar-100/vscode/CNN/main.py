@@ -48,7 +48,7 @@ else:
 
 BATCH_SIZE = 64          # Number of images per batch
 LEARNING_RATE = 0.001    # Learning rate for the optimizer
-NUM_EPOCHS = 100         # Number of times to iterate over the entire dataset
+NUM_EPOCHS = 500         # Number of times to iterate over the entire dataset
 NUM_CLASSES = 100        # CIFAR-100 has 100 classes
 INPUT_SHAPE = (32, 32, 3) # CIFAR images are 32x32 pixels with 3 color channels (RGB)
 L2_LAMBDA = 0.0002      # Define L2 regularization strength
