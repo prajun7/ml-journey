@@ -146,7 +146,7 @@ reduce_lr = ReduceLROnPlateau(
 print("Defining the Keras Sequential model (with Batch Norm, L2, Softmax output)...")
 
 model = models.Sequential([
-    # Block 1: Two Conv2D layers
+    # Block 1: Two Conv2D layers starting with 32 filters
     layers.Conv2D(32, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA), input_shape=INPUT_SHAPE),
     layers.BatchNormalization(),
     layers.Activation('relu'),
@@ -156,28 +156,48 @@ model = models.Sequential([
     layers.MaxPooling2D((2, 2)),
     layers.Dropout(0.25),
 
-    # Block 2: Two Conv2D layers
+    # Block 2: Three Conv2D layers with 64 filters
     layers.Conv2D(64, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
     layers.BatchNormalization(),
     layers.Activation('relu'),
     layers.Conv2D(64, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
     layers.BatchNormalization(),
     layers.Activation('relu'),
-    layers.MaxPooling2D((2, 2)),
-    layers.Dropout(0.25),
-
-    # Block 3: Two Conv2D layers
-    layers.Conv2D(128, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
-    layers.BatchNormalization(),
-    layers.Activation('relu'),
-    layers.Conv2D(128, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
+    layers.Conv2D(64, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
     layers.BatchNormalization(),
     layers.Activation('relu'),
     layers.MaxPooling2D((2, 2)),
     layers.Dropout(0.3),
 
-    # Flatten and Dense Layers
+    # Block 3: Three Conv2D layers with 128 filters
+    layers.Conv2D(128, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
+    layers.BatchNormalization(),
+    layers.Activation('relu'),
+    layers.Conv2D(128, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
+    layers.BatchNormalization(),
+    layers.Activation('relu'),
+    layers.Conv2D(128, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
+    layers.BatchNormalization(),
+    layers.Activation('relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.4),
+    
+    # Block 4: Two Conv2D layers with 256 filters
+    layers.Conv2D(256, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
+    layers.BatchNormalization(),
+    layers.Activation('relu'),
+    layers.Conv2D(256, (3, 3), padding='same', kernel_regularizer=l2(L2_LAMBDA)),
+    layers.BatchNormalization(),
+    layers.Activation('relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.4),
+
+    # Flatten and Dense Layers (expanded)
     layers.Flatten(),
+    layers.Dense(2048, kernel_regularizer=l2(L2_LAMBDA)),
+    layers.BatchNormalization(),
+    layers.Activation('relu'),
+    layers.Dropout(0.5),
     layers.Dense(1024, kernel_regularizer=l2(L2_LAMBDA)),
     layers.BatchNormalization(),
     layers.Activation('relu'),
