@@ -1,11 +1,3 @@
-# Import TensorFlow, Keras components, and other utilities.
-# - tensorflow as tf: The core TensorFlow library.
-# - tensorflow.keras : TensorFlow's high-level API for building and training models.
-# - layers: Module containing standard neural network layers (Conv2D, Dense, etc.).
-# - models: Module for creating models (Sequential, Functional API).
-# - datasets: Module containing built-in datasets like CIFAR-100.
-# - optimizers: Module containing optimization algorithms (Adam, SGD, etc.).
-
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, models, datasets, optimizers, losses
@@ -27,31 +19,21 @@ print(f"Keras Version: {keras.__version__}")
 gpu_devices = tf.config.list_physical_devices('GPU')
 if gpu_devices:
     print(f"GPU available: {gpu_devices}")
-    # Optional: Configure GPU memory growth to avoid allocating all memory at once
     try:
         for gpu in gpu_devices:
             tf.config.experimental.set_memory_growth(gpu, True)
         print("GPU memory growth configured.")
     except RuntimeError as e:
-        # Memory growth must be set before GPUs have been initialized
         print(e)
 else:
     print("GPU not available, using CPU.")
-
-# Configuration and Hyperparameters
-# - BATCH_SIZE: Number of images processed in one training step.
-# - LEARNING_RATE: Controls the step size during optimization.
-# - NUM_EPOCHS: How many times the entire training dataset is passed through the model.
-# - NUM_CLASSES: CIFAR-100 has 100 distinct image categories.
-# - INPUT_SHAPE: The dimensions of each input image (Height, Width, Channels).
-# - L2_LAMBDA
 
 BATCH_SIZE = 64          # Number of images per batch
 LEARNING_RATE = 0.001    # Learning rate for the optimizer
 NUM_EPOCHS = 500         # Number of times to iterate over the entire dataset
 NUM_CLASSES = 100        # CIFAR-100 has 100 classes
 INPUT_SHAPE = (32, 32, 3) # CIFAR images are 32x32 pixels with 3 color channels (RGB)
-L2_LAMBDA = 0.0002      # Define L2 regularization strength
+L2_LAMBDA = 0.0002      # L2 regularization strength
 
 print(f"Configuration:")
 print(f"  Batch Size: {BATCH_SIZE}")
@@ -85,8 +67,8 @@ print(f"  Min/Max pixel values: {x_train.min()}/{x_train.max()}") # 0/255
 
 # Prepare the data for training:
 # - Convert Image Type: Change image data type from `uint8` to `float32` for calculations.
-# - Normalize Pixels: Scale pixel values from the range [0, 255] to [0, 1]. This helps stabilize training.
-# - Labels: The labels are already integers (0-99), which is the format expected by `SparseCategoricalCrossentropy` loss.
+# - Normalize Pixels: Scale pixel values from the range [0, 255] to [0, 1]. This helps stabilize training. Alternatively, you could scale to [-1, 1] by dividing by 127.5 and subtracting 1.
+# - Labels: The labels are already integers (0-99), which is the format expected by `SparseCategoricalCrossentropy` loss. No changes needed for `y_train`, `y_test`.
 
 # Convert image data types to float32
 x_train = x_train.astype('float32')
@@ -208,14 +190,12 @@ model = models.Sequential([
 print("Model defined successfully with Batch Norm, L2, and Softmax output.")
 model.summary()
 
-# Compile the model
 model.compile(
     optimizer=optimizers.Adam(learning_rate=LEARNING_RATE),
     loss=losses.SparseCategoricalCrossentropy(),
     metrics=['accuracy']
 )
 
-# Train the model
 history = model.fit(
     train_dataset,
     epochs=NUM_EPOCHS,
@@ -223,9 +203,6 @@ history = model.fit(
     callbacks=[early_stopping, reduce_lr]
 )
 
-# Evaluating the trained model's performance on the test dataset using `model.evaluate()`.
-# - Pass the test data (`test_dataset`).
-# - It returns the final loss and metric values (e.g., accuracy) calculated on the test set.
 # Evaluate the model
 
 print("\nEvaluating the model on the test dataset...")
