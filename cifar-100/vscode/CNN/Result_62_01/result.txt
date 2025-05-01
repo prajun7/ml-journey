@@ -1,0 +1,454 @@
+PS C:\Users\pt0048\Desktop\cifar-100\vscode\CNN> python .\main_more_layers.py 
+Libraries imported successfully.
+TensorFlow Version: 2.10.0
+Keras Version: 2.10.0
+GPU available: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+GPU memory growth configured.
+Configuration:
+  Batch Size: 64
+  Learning Rate: 0.001
+  Number of Epochs: 500
+  Number of Classes: 100
+  Input Shape: (32, 32, 3)
+Loading CIFAR-100 dataset...
+Dataset loaded successfully.
+  x_train shape: (50000, 32, 32, 3)
+  y_train shape: (50000, 1)
+  x_test shape: (10000, 32, 32, 3)
+  y_test shape: (10000, 1)
+  Number of training samples: 50000
+  Number of test samples: 10000
+  Image data type: uint8
+  Label data type: int32
+  Min/Max pixel values: 0/255
+  x_train data type after conversion: float32
+  Min/Max pixel values after normalization: 0.0/1.0
+  y_train shape remains: (50000, 1)
+2025-04-20 17:39:17.098119: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-20 17:39:17.455399: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9444 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4070, pci bus id: 0000:01:00.0, compute capability: 8.9
+WARNING:tensorflow:Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.  
+WARNING:tensorflow:Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting RngReadAndSkip cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting Bitcast cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting StatelessRandomUniformV2 cause there is no registered converter for this op.
+WARNING:tensorflow:Using a while_loop for converting ImageProjectiveTransformV3 cause there is no registered converter for this op.
+Defining the Keras Sequential model (with Batch Norm, L2, Softmax output)...
+Model defined successfully with Batch Norm, L2, and Softmax output.
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 32, 32, 32)        896
+
+ batch_normalization (BatchN  (None, 32, 32, 32)       128
+ ormalization)
+
+ activation (Activation)     (None, 32, 32, 32)        0
+
+ conv2d_1 (Conv2D)           (None, 32, 32, 32)        9248
+
+ batch_normalization_1 (Batc  (None, 32, 32, 32)       128
+ hNormalization)
+
+ activation_1 (Activation)   (None, 32, 32, 32)        0
+
+ max_pooling2d (MaxPooling2D  (None, 16, 16, 32)       0
+ )
+
+ dropout (Dropout)           (None, 16, 16, 32)        0
+
+ conv2d_2 (Conv2D)           (None, 16, 16, 64)        18496
+
+ batch_normalization_2 (Batc  (None, 16, 16, 64)       256
+ hNormalization)
+
+ activation_2 (Activation)   (None, 16, 16, 64)        0
+
+ conv2d_3 (Conv2D)           (None, 16, 16, 64)        36928
+
+ batch_normalization_3 (Batc  (None, 16, 16, 64)       256
+ hNormalization)
+
+ activation_3 (Activation)   (None, 16, 16, 64)        0
+
+ conv2d_4 (Conv2D)           (None, 16, 16, 64)        36928
+
+ batch_normalization_4 (Batc  (None, 16, 16, 64)       256
+ hNormalization)
+
+ activation_4 (Activation)   (None, 16, 16, 64)        0
+
+ max_pooling2d_1 (MaxPooling  (None, 8, 8, 64)         0
+ 2D)
+
+ dropout_1 (Dropout)         (None, 8, 8, 64)          0
+
+ conv2d_5 (Conv2D)           (None, 8, 8, 128)         73856
+
+ batch_normalization_5 (Batc  (None, 8, 8, 128)        512
+ hNormalization)
+
+ activation_5 (Activation)   (None, 8, 8, 128)         0
+
+ conv2d_6 (Conv2D)           (None, 8, 8, 128)         147584
+
+ batch_normalization_6 (Batc  (None, 8, 8, 128)        512
+ hNormalization)
+
+ activation_6 (Activation)   (None, 8, 8, 128)         0
+
+ conv2d_7 (Conv2D)           (None, 8, 8, 128)         147584
+
+ batch_normalization_7 (Batc  (None, 8, 8, 128)        512
+ hNormalization)
+
+ activation_7 (Activation)   (None, 8, 8, 128)         0
+
+ max_pooling2d_2 (MaxPooling  (None, 4, 4, 128)        0
+ 2D)
+
+ dropout_2 (Dropout)         (None, 4, 4, 128)         0
+
+ conv2d_8 (Conv2D)           (None, 4, 4, 256)         295168
+
+ batch_normalization_8 (Batc  (None, 4, 4, 256)        1024
+ hNormalization)
+
+ activation_8 (Activation)   (None, 4, 4, 256)         0
+
+ conv2d_9 (Conv2D)           (None, 4, 4, 256)         590080
+
+ batch_normalization_9 (Batc  (None, 4, 4, 256)        1024
+ hNormalization)
+
+ activation_9 (Activation)   (None, 4, 4, 256)         0
+
+ max_pooling2d_3 (MaxPooling  (None, 2, 2, 256)        0
+ 2D)
+
+ dropout_3 (Dropout)         (None, 2, 2, 256)         0
+
+ flatten (Flatten)           (None, 1024)              0
+
+ dense (Dense)               (None, 2048)              2099200
+
+ batch_normalization_10 (Bat  (None, 2048)             8192
+ chNormalization)
+
+ activation_10 (Activation)  (None, 2048)              0
+
+ dropout_4 (Dropout)         (None, 2048)              0
+
+ dense_1 (Dense)             (None, 1024)              2098176
+
+ batch_normalization_11 (Bat  (None, 1024)             4096
+ chNormalization)
+
+ activation_11 (Activation)  (None, 1024)              0
+
+ dropout_5 (Dropout)         (None, 1024)              0
+
+ dense_2 (Dense)             (None, 100)               102500
+
+=================================================================
+Total params: 5,673,540
+Trainable params: 5,665,092
+Non-trainable params: 8,448
+_________________________________________________________________
+Epoch 1/500
+2025-04-20 17:39:21.529225: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8101
+2025-04-20 17:39:22.144483: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] INTERNAL: ptxas exited with non-zero error code -1, output:
+Relying on driver to perform ptx compilation.
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2025-04-20 17:39:22.705327: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+782/782 [==============================] - 16s 17ms/step - loss: 5.2948 - accuracy: 0.0457 - val_loss: 4.8666 - val_accuracy: 0.0800 - lr: 0.0010
+Epoch 2/500
+782/782 [==============================] - 13s 16ms/step - loss: 4.5778 - accuracy: 0.0958 - val_loss: 4.6696 - val_accuracy: 0.0994 - lr: 0.0010
+Epoch 3/500
+782/782 [==============================] - 13s 16ms/step - loss: 4.2404 - accuracy: 0.1307 - val_loss: 4.0354 - val_accuracy: 0.1659 - lr: 0.0010
+Epoch 4/500
+782/782 [==============================] - 13s 17ms/step - loss: 4.0525 - accuracy: 0.1620 - val_loss: 3.9904 - val_accuracy: 0.1796 - lr: 0.0010
+Epoch 5/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.9534 - accuracy: 0.1886 - val_loss: 4.1022 - val_accuracy: 0.1867 - lr: 0.0010
+Epoch 6/500
+782/782 [==============================] - 13s 17ms/step - loss: 3.9036 - accuracy: 0.2015 - val_loss: 3.7813 - val_accuracy: 0.2305 - lr: 0.0010
+Epoch 7/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.8593 - accuracy: 0.2217 - val_loss: 3.7172 - val_accuracy: 0.2608 - lr: 0.0010
+Epoch 8/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.8169 - accuracy: 0.2367 - val_loss: 3.9528 - val_accuracy: 0.2242 - lr: 0.0010
+Epoch 9/500
+782/782 [==============================] - 12s 16ms/step - loss: 3.7795 - accuracy: 0.2523 - val_loss: 3.5275 - val_accuracy: 0.3062 - lr: 0.0010
+Epoch 10/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.7294 - accuracy: 0.2683 - val_loss: 3.7178 - val_accuracy: 0.2889 - lr: 0.0010
+Epoch 11/500
+782/782 [==============================] - 12s 16ms/step - loss: 3.6970 - accuracy: 0.2816 - val_loss: 3.5856 - val_accuracy: 0.3092 - lr: 0.0010
+Epoch 12/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.6544 - accuracy: 0.2973 - val_loss: 3.4808 - val_accuracy: 0.3362 - lr: 0.0010
+Epoch 13/500
+782/782 [==============================] - 12s 16ms/step - loss: 3.6188 - accuracy: 0.3094 - val_loss: 3.5625 - val_accuracy: 0.3295 - lr: 0.0010
+Epoch 14/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.5834 - accuracy: 0.3183 - val_loss: 3.6000 - val_accuracy: 0.3279 - lr: 0.0010
+Epoch 15/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.5413 - accuracy: 0.3295 - val_loss: 3.6456 - val_accuracy: 0.3239 - lr: 0.0010
+Epoch 16/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.5159 - accuracy: 0.3347 - val_loss: 3.4554 - val_accuracy: 0.3587 - lr: 0.0010
+Epoch 17/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.4845 - accuracy: 0.3421 - val_loss: 3.5469 - val_accuracy: 0.3543 - lr: 0.0010
+Epoch 18/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.4605 - accuracy: 0.3531 - val_loss: 3.5874 - val_accuracy: 0.3435 - lr: 0.0010
+Epoch 19/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.4446 - accuracy: 0.3563 - val_loss: 3.4237 - val_accuracy: 0.3617 - lr: 0.0010
+Epoch 20/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.4311 - accuracy: 0.3570 - val_loss: 3.4623 - val_accuracy: 0.3682 - lr: 0.0010
+Epoch 21/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.4198 - accuracy: 0.3627 - val_loss: 3.3632 - val_accuracy: 0.3847 - lr: 0.0010
+Epoch 22/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.3975 - accuracy: 0.3694 - val_loss: 3.4303 - val_accuracy: 0.3648 - lr: 0.0010
+Epoch 23/500
+782/782 [==============================] - 12s 16ms/step - loss: 3.3856 - accuracy: 0.3735 - val_loss: 3.2513 - val_accuracy: 0.4044 - lr: 0.0010
+Epoch 24/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.3714 - accuracy: 0.3775 - val_loss: 3.3037 - val_accuracy: 0.4040 - lr: 0.0010
+Epoch 25/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.3521 - accuracy: 0.3850 - val_loss: 3.6288 - val_accuracy: 0.3549 - lr: 0.0010
+Epoch 26/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.3432 - accuracy: 0.3849 - val_loss: 3.3480 - val_accuracy: 0.3976 - lr: 0.0010
+Epoch 27/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.3292 - accuracy: 0.3906 - val_loss: 3.1550 - val_accuracy: 0.4343 - lr: 0.0010
+Epoch 28/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.3083 - accuracy: 0.3956 - val_loss: 3.2898 - val_accuracy: 0.4088 - lr: 0.0010
+Epoch 29/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.2998 - accuracy: 0.3956 - val_loss: 3.5550 - val_accuracy: 0.3608 - lr: 0.0010
+Epoch 30/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.2924 - accuracy: 0.3968 - val_loss: 3.2776 - val_accuracy: 0.4135 - lr: 0.0010
+Epoch 31/500
+782/782 [==============================] - 13s 16ms/step - loss: 3.2678 - accuracy: 0.4056 - val_loss: 3.2666 - val_accuracy: 0.4070 - lr: 0.0010
+Epoch 32/500
+779/782 [============================>.] - ETA: 0s - loss: 3.2612 - accuracy: 0.4061  
+Epoch 32: ReduceLROnPlateau reducing learning rate to 0.0005000000237487257.
+782/782 [==============================] - 13s 16ms/step - loss: 3.2610 - accuracy: 0.4062 - val_loss: 3.6737 - val_accuracy: 0.3647 - lr: 0.0010
+Epoch 33/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.9972 - accuracy: 0.4474 - val_loss: 2.7462 - val_accuracy: 0.4938 - lr: 5.0000e-04
+Epoch 34/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.8514 - accuracy: 0.4576 - val_loss: 2.6298 - val_accuracy: 0.5056 - lr: 5.0000e-04
+Epoch 35/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.7848 - accuracy: 0.4605 - val_loss: 2.6497 - val_accuracy: 0.4942 - lr: 5.0000e-04
+Epoch 36/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.7437 - accuracy: 0.4666 - val_loss: 2.6017 - val_accuracy: 0.5070 - lr: 5.0000e-04
+Epoch 37/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.7029 - accuracy: 0.4713 - val_loss: 2.5861 - val_accuracy: 0.5063 - lr: 5.0000e-04
+Epoch 38/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.6783 - accuracy: 0.4750 - val_loss: 2.4652 - val_accuracy: 0.5306 - lr: 5.0000e-04
+Epoch 39/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.6575 - accuracy: 0.4779 - val_loss: 2.5657 - val_accuracy: 0.5024 - lr: 5.0000e-04
+Epoch 40/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.6418 - accuracy: 0.4794 - val_loss: 2.7009 - val_accuracy: 0.4825 - lr: 5.0000e-04
+Epoch 41/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.6277 - accuracy: 0.4794 - val_loss: 2.5966 - val_accuracy: 0.5016 - lr: 5.0000e-04
+Epoch 42/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.6089 - accuracy: 0.4869 - val_loss: 2.5023 - val_accuracy: 0.5257 - lr: 5.0000e-04
+Epoch 43/500
+777/782 [============================>.] - ETA: 0s - loss: 2.6032 - accuracy: 0.4868  
+Epoch 43: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+782/782 [==============================] - 13s 16ms/step - loss: 2.6023 - accuracy: 0.4869 - val_loss: 2.7403 - val_accuracy: 0.4773 - lr: 5.0000e-04
+Epoch 44/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.4601 - accuracy: 0.5154 - val_loss: 2.3187 - val_accuracy: 0.5453 - lr: 2.5000e-04
+Epoch 45/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.3816 - accuracy: 0.5250 - val_loss: 2.2793 - val_accuracy: 0.5511 - lr: 2.5000e-04
+Epoch 46/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.3385 - accuracy: 0.5313 - val_loss: 2.2660 - val_accuracy: 0.5516 - lr: 2.5000e-04
+Epoch 47/500
+782/782 [==============================] - 12s 16ms/step - loss: 2.3030 - accuracy: 0.5319 - val_loss: 2.2306 - val_accuracy: 0.5573 - lr: 2.5000e-04
+Epoch 48/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.2761 - accuracy: 0.5349 - val_loss: 2.2729 - val_accuracy: 0.5466 - lr: 2.5000e-04
+Epoch 49/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.2547 - accuracy: 0.5381 - val_loss: 2.2416 - val_accuracy: 0.5498 - lr: 2.5000e-04
+Epoch 50/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.2242 - accuracy: 0.5392 - val_loss: 2.2858 - val_accuracy: 0.5434 - lr: 2.5000e-04
+Epoch 51/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.2181 - accuracy: 0.5424 - val_loss: 2.2106 - val_accuracy: 0.5544 - lr: 2.5000e-04
+Epoch 52/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.2082 - accuracy: 0.5433 - val_loss: 2.2642 - val_accuracy: 0.5384 - lr: 2.5000e-04
+Epoch 53/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.1905 - accuracy: 0.5447 - val_loss: 2.2770 - val_accuracy: 0.5349 - lr: 2.5000e-04
+Epoch 54/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.1754 - accuracy: 0.5464 - val_loss: 2.1397 - val_accuracy: 0.5640 - lr: 2.5000e-04
+Epoch 55/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.1715 - accuracy: 0.5486 - val_loss: 2.1485 - val_accuracy: 0.5628 - lr: 2.5000e-04
+Epoch 56/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.1563 - accuracy: 0.5522 - val_loss: 2.1397 - val_accuracy: 0.5589 - lr: 2.5000e-04
+Epoch 57/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.1526 - accuracy: 0.5509 - val_loss: 2.2942 - val_accuracy: 0.5407 - lr: 2.5000e-04
+Epoch 58/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.1407 - accuracy: 0.5524 - val_loss: 2.2703 - val_accuracy: 0.5376 - lr: 2.5000e-04
+Epoch 59/500
+780/782 [============================>.] - ETA: 0s - loss: 2.1370 - accuracy: 0.5530  
+Epoch 59: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+782/782 [==============================] - 13s 16ms/step - loss: 2.1373 - accuracy: 0.5529 - val_loss: 2.1836 - val_accuracy: 0.5561 - lr: 2.5000e-04
+Epoch 60/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.0552 - accuracy: 0.5704 - val_loss: 2.1312 - val_accuracy: 0.5683 - lr: 1.2500e-04
+Epoch 61/500
+782/782 [==============================] - 13s 16ms/step - loss: 2.0205 - accuracy: 0.5750 - val_loss: 2.1017 - val_accuracy: 0.5761 - lr: 1.2500e-04
+Epoch 62/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9914 - accuracy: 0.5809 - val_loss: 2.0794 - val_accuracy: 0.5728 - lr: 1.2500e-04
+Epoch 63/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9691 - accuracy: 0.5828 - val_loss: 2.0008 - val_accuracy: 0.5910 - lr: 1.2500e-04
+Epoch 64/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9641 - accuracy: 0.5858 - val_loss: 2.1060 - val_accuracy: 0.5636 - lr: 1.2500e-04
+Epoch 65/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9392 - accuracy: 0.5868 - val_loss: 2.1016 - val_accuracy: 0.5674 - lr: 1.2500e-04
+Epoch 66/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9294 - accuracy: 0.5877 - val_loss: 1.9966 - val_accuracy: 0.5854 - lr: 1.2500e-04
+Epoch 67/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9170 - accuracy: 0.5907 - val_loss: 2.0811 - val_accuracy: 0.5685 - lr: 1.2500e-04
+Epoch 68/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8965 - accuracy: 0.5929 - val_loss: 2.0146 - val_accuracy: 0.5840 - lr: 1.2500e-04
+Epoch 69/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.9039 - accuracy: 0.5897 - val_loss: 1.9631 - val_accuracy: 0.5898 - lr: 1.2500e-04
+Epoch 70/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8767 - accuracy: 0.5969 - val_loss: 1.9838 - val_accuracy: 0.5838 - lr: 1.2500e-04
+Epoch 71/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8763 - accuracy: 0.5945 - val_loss: 2.0201 - val_accuracy: 0.5796 - lr: 1.2500e-04
+Epoch 72/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8689 - accuracy: 0.5959 - val_loss: 1.9984 - val_accuracy: 0.5815 - lr: 1.2500e-04
+Epoch 73/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8605 - accuracy: 0.5972 - val_loss: 2.0198 - val_accuracy: 0.5755 - lr: 1.2500e-04
+Epoch 74/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8459 - accuracy: 0.6021 - val_loss: 1.9329 - val_accuracy: 0.5913 - lr: 1.2500e-04
+Epoch 75/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8413 - accuracy: 0.5988 - val_loss: 1.9688 - val_accuracy: 0.5861 - lr: 1.2500e-04
+Epoch 76/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8359 - accuracy: 0.6029 - val_loss: 1.9161 - val_accuracy: 0.5972 - lr: 1.2500e-04
+Epoch 77/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8289 - accuracy: 0.6035 - val_loss: 1.9138 - val_accuracy: 0.5940 - lr: 1.2500e-04
+Epoch 78/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8317 - accuracy: 0.6037 - val_loss: 1.9593 - val_accuracy: 0.5873 - lr: 1.2500e-04
+Epoch 79/500
+782/782 [==============================] - 12s 16ms/step - loss: 1.8165 - accuracy: 0.6046 - val_loss: 1.9433 - val_accuracy: 0.5908 - lr: 1.2500e-04
+Epoch 80/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8091 - accuracy: 0.6060 - val_loss: 1.9941 - val_accuracy: 0.5807 - lr: 1.2500e-04
+Epoch 81/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.8085 - accuracy: 0.6037 - val_loss: 1.9567 - val_accuracy: 0.5850 - lr: 1.2500e-04
+Epoch 82/500
+780/782 [============================>.] - ETA: 0s - loss: 1.8039 - accuracy: 0.6036  
+Epoch 82: ReduceLROnPlateau reducing learning rate to 6.25000029685907e-05.
+782/782 [==============================] - 13s 16ms/step - loss: 1.8042 - accuracy: 0.6036 - val_loss: 1.9345 - val_accuracy: 0.5852 - lr: 1.2500e-04
+Epoch 83/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.7611 - accuracy: 0.6150 - val_loss: 1.9028 - val_accuracy: 0.6002 - lr: 6.2500e-05
+Epoch 84/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.7372 - accuracy: 0.6237 - val_loss: 1.8941 - val_accuracy: 0.5987 - lr: 6.2500e-05
+Epoch 85/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.7272 - accuracy: 0.6244 - val_loss: 1.8968 - val_accuracy: 0.6000 - lr: 6.2500e-05
+Epoch 86/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.7117 - accuracy: 0.6253 - val_loss: 1.9045 - val_accuracy: 0.5989 - lr: 6.2500e-05
+Epoch 87/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.7031 - accuracy: 0.6263 - val_loss: 1.9039 - val_accuracy: 0.5997 - lr: 6.2500e-05
+Epoch 88/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.7034 - accuracy: 0.6257 - val_loss: 1.8891 - val_accuracy: 0.5972 - lr: 6.2500e-05
+Epoch 89/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6940 - accuracy: 0.6271 - val_loss: 1.9178 - val_accuracy: 0.5947 - lr: 6.2500e-05
+Epoch 90/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6938 - accuracy: 0.6253 - val_loss: 1.8702 - val_accuracy: 0.6029 - lr: 6.2500e-05
+Epoch 91/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6843 - accuracy: 0.6314 - val_loss: 1.8991 - val_accuracy: 0.5970 - lr: 6.2500e-05
+Epoch 92/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6719 - accuracy: 0.6309 - val_loss: 1.8937 - val_accuracy: 0.6017 - lr: 6.2500e-05
+Epoch 93/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6723 - accuracy: 0.6312 - val_loss: 1.8713 - val_accuracy: 0.6006 - lr: 6.2500e-05
+Epoch 94/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6582 - accuracy: 0.6327 - val_loss: 1.8558 - val_accuracy: 0.6042 - lr: 6.2500e-05
+Epoch 95/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6545 - accuracy: 0.6343 - val_loss: 1.8524 - val_accuracy: 0.6041 - lr: 6.2500e-05
+Epoch 96/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6452 - accuracy: 0.6332 - val_loss: 1.8877 - val_accuracy: 0.5983 - lr: 6.2500e-05
+Epoch 97/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6432 - accuracy: 0.6336 - val_loss: 1.8733 - val_accuracy: 0.6004 - lr: 6.2500e-05
+Epoch 98/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6438 - accuracy: 0.6337 - val_loss: 1.9038 - val_accuracy: 0.5974 - lr: 6.2500e-05
+Epoch 99/500
+782/782 [==============================] - 12s 16ms/step - loss: 1.6357 - accuracy: 0.6359 - val_loss: 1.8570 - val_accuracy: 0.6046 - lr: 6.2500e-05
+Epoch 100/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6320 - accuracy: 0.6340 - val_loss: 1.8313 - val_accuracy: 0.6073 - lr: 6.2500e-05
+Epoch 101/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6303 - accuracy: 0.6350 - val_loss: 1.8756 - val_accuracy: 0.5965 - lr: 6.2500e-05
+Epoch 102/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6257 - accuracy: 0.6366 - val_loss: 1.8364 - val_accuracy: 0.6052 - lr: 6.2500e-05
+Epoch 103/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6225 - accuracy: 0.6366 - val_loss: 1.8229 - val_accuracy: 0.6083 - lr: 6.2500e-05
+Epoch 104/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6137 - accuracy: 0.6400 - val_loss: 1.9102 - val_accuracy: 0.5943 - lr: 6.2500e-05
+Epoch 105/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6113 - accuracy: 0.6401 - val_loss: 1.8250 - val_accuracy: 0.6094 - lr: 6.2500e-05
+Epoch 106/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6082 - accuracy: 0.6404 - val_loss: 1.8067 - val_accuracy: 0.6153 - lr: 6.2500e-05
+Epoch 107/500
+782/782 [==============================] - 12s 16ms/step - loss: 1.6025 - accuracy: 0.6388 - val_loss: 1.8678 - val_accuracy: 0.6012 - lr: 6.2500e-05
+Epoch 108/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6023 - accuracy: 0.6364 - val_loss: 1.8397 - val_accuracy: 0.6048 - lr: 6.2500e-05
+Epoch 109/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.6065 - accuracy: 0.6415 - val_loss: 1.7984 - val_accuracy: 0.6140 - lr: 6.2500e-05
+Epoch 110/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5929 - accuracy: 0.6420 - val_loss: 1.8081 - val_accuracy: 0.6120 - lr: 6.2500e-05
+Epoch 111/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5885 - accuracy: 0.6409 - val_loss: 1.8178 - val_accuracy: 0.6103 - lr: 6.2500e-05
+Epoch 112/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5837 - accuracy: 0.6414 - val_loss: 1.8219 - val_accuracy: 0.6080 - lr: 6.2500e-05
+Epoch 113/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5703 - accuracy: 0.6444 - val_loss: 1.8334 - val_accuracy: 0.6060 - lr: 6.2500e-05
+Epoch 114/500
+777/782 [============================>.] - ETA: 0s - loss: 1.5933 - accuracy: 0.6425  
+Epoch 114: ReduceLROnPlateau reducing learning rate to 3.125000148429535e-05.
+782/782 [==============================] - 13s 16ms/step - loss: 1.5930 - accuracy: 0.6425 - val_loss: 1.8044 - val_accuracy: 0.6112 - lr: 6.2500e-05
+Epoch 115/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5506 - accuracy: 0.6506 - val_loss: 1.7799 - val_accuracy: 0.6124 - lr: 3.1250e-05
+Epoch 116/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5445 - accuracy: 0.6515 - val_loss: 1.7645 - val_accuracy: 0.6201 - lr: 3.1250e-05
+Epoch 117/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5399 - accuracy: 0.6554 - val_loss: 1.7963 - val_accuracy: 0.6114 - lr: 3.1250e-05
+Epoch 118/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5427 - accuracy: 0.6521 - val_loss: 1.7803 - val_accuracy: 0.6157 - lr: 3.1250e-05
+Epoch 119/500
+782/782 [==============================] - 12s 16ms/step - loss: 1.5250 - accuracy: 0.6562 - val_loss: 1.7986 - val_accuracy: 0.6103 - lr: 3.1250e-05
+Epoch 120/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5260 - accuracy: 0.6526 - val_loss: 1.7882 - val_accuracy: 0.6162 - lr: 3.1250e-05
+Epoch 121/500
+778/782 [============================>.] - ETA: 0s - loss: 1.5285 - accuracy: 0.6554  
+Epoch 121: ReduceLROnPlateau reducing learning rate to 1.5625000742147677e-05.
+782/782 [==============================] - 13s 16ms/step - loss: 1.5292 - accuracy: 0.6554 - val_loss: 1.7764 - val_accuracy: 0.6137 - lr: 3.1250e-05
+Epoch 122/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5095 - accuracy: 0.6568 - val_loss: 1.7893 - val_accuracy: 0.6122 - lr: 1.5625e-05
+Epoch 123/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5117 - accuracy: 0.6592 - val_loss: 1.7902 - val_accuracy: 0.6125 - lr: 1.5625e-05
+Epoch 124/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5062 - accuracy: 0.6589 - val_loss: 1.7736 - val_accuracy: 0.6152 - lr: 1.5625e-05
+Epoch 125/500
+782/782 [==============================] - 13s 16ms/step - loss: 1.5004 - accuracy: 0.6604 - val_loss: 1.7798 - val_accuracy: 0.6141 - lr: 1.5625e-05
+Epoch 126/500
+777/782 [============================>.] - ETA: 0s - loss: 1.4921 - accuracy: 0.6612Restoring model weights from the end of the best epoch: 116.
+
+Epoch 126: ReduceLROnPlateau reducing learning rate to 7.812500371073838e-06.
+782/782 [==============================] - 13s 16ms/step - loss: 1.4929 - accuracy: 0.6610 - val_loss: 1.7701 - val_accuracy: 0.6180 - lr: 1.5625e-05
+Epoch 126: early stopping
+
+Evaluating the model on the test dataset...
+157/157 [==============================] - 0s 3ms/step - loss: 1.7645 - accuracy: 0.6201
+
+Test Loss: 1.7645
+Test Accuracy: 62.01%
+
+Plotting training history...

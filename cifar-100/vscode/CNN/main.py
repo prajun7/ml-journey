@@ -1,11 +1,3 @@
-# Import TensorFlow, Keras components, and other utilities.
-# - tensorflow as tf: The core TensorFlow library.
-# - tensorflow.keras : TensorFlow's high-level API for building and training models.
-# - layers: Module containing standard neural network layers (Conv2D, Dense, etc.).
-# - models: Module for creating models (Sequential, Functional API).
-# - datasets: Module containing built-in datasets like CIFAR-100.
-# - optimizers: Module containing optimization algorithms (Adam, SGD, etc.).
-
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, models, datasets, optimizers, losses
@@ -85,8 +77,8 @@ print(f"  Min/Max pixel values: {x_train.min()}/{x_train.max()}") # 0/255
 
 # Prepare the data for training:
 # - Convert Image Type: Change image data type from `uint8` to `float32` for calculations.
-# - Normalize Pixels: Scale pixel values from the range [0, 255] to [0, 1]. This helps stabilize training.
-# - Labels: The labels are already integers (0-99), which is the format expected by `SparseCategoricalCrossentropy` loss.
+# - Normalize Pixels: Scale pixel values from the range [0, 255] to [0, 1]. This helps stabilize training. Alternatively, you could scale to [-1, 1] by dividing by 127.5 and subtracting 1.
+# - Labels: The labels are already integers (0-99), which is the format expected by `SparseCategoricalCrossentropy` loss. No changes needed for `y_train`, `y_test`.
 
 # Convert image data types to float32
 x_train = x_train.astype('float32')
