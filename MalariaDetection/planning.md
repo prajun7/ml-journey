@@ -1,30 +1,18 @@
 # Malaria Detection Assignment - Planning Document
 
-- 1. Introduction & Problem Statement
-
-# 2. Data Loading & Exploration
-
-# 3. Exploratory Data Analysis (EDA)
-
-# 4. Data Preprocessing & Augmentation
-
-# 5. Dimension Reduction Experiments
-
-# - PCA Analysis
-
-# - t-SNE/UMAP Visualization
-
-# - Feature Extraction with Pre-trained Models
-
-# 6. Model Development
-
-# - Baseline Models
-
-# - Advanced Models
-
-# 7. Results Comparison & Analysis
-
-# 8. Conclusions & Future Work
+- **1. Introduction & Problem Statement**
+- **2. Data Loading & Exploration**
+- **3. Exploratory Data Analysis (EDA)**
+- **4. Data Preprocessing & Augmentation**
+- **5. Dimension Reduction Experiments**
+  - PCA Analysis
+  - t-SNE/UMAP Visualization
+  - Feature Extraction with Pre-trained Models
+- **6. Model Development**
+  - Baseline Models
+  - Advanced Models
+- **7. Results Comparison & Analysis**
+- **8. Conclusions & Future Work**
 
 ## **Assignment Analysis & Approach**
 
